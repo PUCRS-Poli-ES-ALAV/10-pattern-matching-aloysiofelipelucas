@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-//O(n)
+//O(s1.length-s2.length)
 
 public class App{
     public static int cont = 0;
