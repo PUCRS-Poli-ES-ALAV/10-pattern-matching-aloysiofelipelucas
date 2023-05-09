@@ -3,7 +3,7 @@ import java.util.Random;
 
 //O(n)
 
-public class App{
+public class HashPalavras{
 
     private static String[] letras = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W",  "X", "Y", "Z"};
     public static int cont = 0;
@@ -45,18 +45,23 @@ public class App{
         in.close();
     }
 
-    public static int matchLetters(String s1, String s2){
-        cont = 0;
-        for(int i = 0; i <= s1.length(); i++){
+    private static long hash(String s, int M) {
+        long h = 0;
+        for (int j = 0; j < M; j++){
             cont++;
-            if(i+s2.length()<=s1.length()){
-                if(s1.substring(i,i+s2.length()).equals(s2)){
-                    return i;
-                }
-            }
-            else{
-                return -1;
-            }
+            h = (h * letras.length + s.charAt(j)) % Integer.MAX_VALUE;
+        }
+        return h;
+     }
+
+    public static int matchLetters(String s1, String s2){
+        int M = s2.length();
+        int N = s1.length();
+        long patHash = hash(s2, M);
+        for (int i = 0; i <= N - M; i++) {
+            long txtHash = hash(s1.substring(i, i+M), M);
+            if (patHash == txtHash)
+                return (i+1); 
         }
         return -1;
     }
