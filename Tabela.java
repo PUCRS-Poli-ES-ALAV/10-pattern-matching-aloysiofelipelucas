@@ -44,6 +44,13 @@ public class Tabela{
             long elapsedH = System.currentTimeMillis() - startH;
             tabela[2][j] =  new Tupla("Num de interações é "+ cont,elapsed+" ms");
         }
+
+        for(Tupla[] linha : tabela){
+            for(Tupla b: linha){
+                System.out.print(b.num1+"-"b.num2+" | ");
+            }
+            System.out.println();
+        }
     }
 
     private static long hash(String s, int M) {
