@@ -9,10 +9,12 @@ public class Tabela{
 
     public static void main(String args[]){
 
-        Tupla[][] tabela = new Tupla[3][7]; 
+        Tupla[][] tabela = new Tupla[3][5]; 
 
-        tabela[1][0] =  new Tupla("Nosso algoritmo", "");
-        tabela[2][0] =  new Tupla("Rabin-Karp algoritmo", "");
+        tabela[0][0] = new Tupla("", "");
+
+        tabela[1][0] =  new Tupla("Nosso algoritmo", " ");
+        tabela[2][0] =  new Tupla("Rabin-Karp algoritmo", " ");
         Random gerador = new Random();
         int aleatorio = 0;
 
@@ -20,7 +22,7 @@ public class Tabela{
         String s2 = "";
         int tamString = 10;
 
-        for(int j = 1; j<7; j++){
+        for(int j = 1; j<5; j++){
             s1  = "";
             s2 = "";
             for(int i = 0; i<tamString; i++){
@@ -44,10 +46,9 @@ public class Tabela{
             long elapsedH = System.currentTimeMillis() - startH;
             tabela[2][j] =  new Tupla("Num de interações é "+ cont,elapsed+" ms");
         }
-
         for(Tupla[] linha : tabela){
             for(Tupla b: linha){
-                System.out.print(b.num1+"-"b.num2+" | ");
+                System.out.print(b.num1+"-"+b.num2+" | ");
             }
             System.out.println();
         }
